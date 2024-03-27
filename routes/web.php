@@ -1,15 +1,16 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('inventory');
-});
+Route::resource('/', ProductController::class)
+    ->only(['index']);
 
-Route::get('/purchases', function () {
-    return view('purchases');
-});
+Route::resource('/purchases', PurchaseController::class)
+    ->only(['index']);
 
-Route::get('/orders', function () {
-    return view('orders');
-});
+Route::resource('/orders', OrderController::class)
+    ->only(['index']);
