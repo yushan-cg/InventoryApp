@@ -7,7 +7,10 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('/', ProductController::class)
-    ->only(['index']);
+    ->only(['index', 'store']);
+
+Route::resource('/products', ProductController::class)
+    ->only(['index', 'store', 'update']);
 
 Route::resource('/purchases', PurchaseController::class)
     ->only(['index']);

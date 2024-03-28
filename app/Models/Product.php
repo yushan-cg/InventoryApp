@@ -11,6 +11,17 @@ class Product extends Model
     use HasFactory;
     protected $guarded = [];
 
+    protected $fillable = [
+        'ProductName',
+        'PartNumber',
+        'ProductLabel',
+        'StartingInventory',
+        'InventoryReceived',
+        'InventoryShipped',
+        'InventoryOnHand',
+        'MinimumRequired',
+    ];
+
     public function purchases(): HasMany
     {
         return $this->hasMany(Purchase::class);
