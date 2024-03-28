@@ -21,7 +21,7 @@ class ProductController extends Controller
         'MinimumRequired' => 'required|integer',
     ];
 
-    public function index(): view{
+    public function index(): View{
         $products = Product::all();
         return view('inventory', compact('products'));
     }
@@ -33,10 +33,21 @@ class ProductController extends Controller
         return redirect()->route('index');
     }
 
-    public function update(Request $request, Product $product):RedirectResponse
+    public function update(Request $request, Product $product): RedirectResponse
     {
-       $validated = $request->validate($this->validationRules);
+        // Validate the incoming request data
+        $validated = $request->validate($this->validationRules);
+
+        // Update the product with the validated data
         $product->update($validated);
+        
+        // Redirect the user to the index page
+        return redirect()->route('index');
+    }
+
+    public function destroy(Product $product): RedirectResponse
+    {
+        $product->delete();
         return redirect()->route('index');
     }
 }

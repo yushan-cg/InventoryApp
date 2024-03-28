@@ -10,7 +10,7 @@ Route::resource('/', ProductController::class)
     ->only(['index', 'store']);
 
 Route::resource('/products', ProductController::class)
-    ->only(['index', 'store', 'update']);
+    ->only(['index', 'store', 'update', 'destroy']);
 
 Route::resource('/purchases', PurchaseController::class)
     ->only(['index']);

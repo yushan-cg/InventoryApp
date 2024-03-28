@@ -1,3 +1,13 @@
+<script setup>
+    // Function to handle modal close event
+    $(document).ready(function() {
+        $('#{{ $modalId }}').on('hidden.bs.modal', function () {
+            // Reset the form fields when modal is closed
+            $('#{{ $formId }}')[0].reset();
+        });
+    });
+</script>
+
 <div class="modal fade" id="{{ $modalId }}" tabindex="-1" aria-labelledby="{{ $modalId }}Label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -20,13 +30,4 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        $('#{{ $modalId }}').on('hidden.bs.modal', function () {
-            // Reset the form fields when modal is closed
-            $('#{{ $formId }}')[0].reset();
-        });
-    });
-</script>
 
